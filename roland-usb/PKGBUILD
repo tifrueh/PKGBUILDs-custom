@@ -1,0 +1,26 @@
+# This is an example PKGBUILD file. Use this as a start to creating your own,
+# and remove these comments. For more information, see 'man PKGBUILD'.
+# NOTE: Please fill out the license field for your package! If it is unknown,
+# then please put 'unknown'.
+
+# Maintainer: Timo Früh <timo.frueh@icloud.com>
+pkgname=roland-usb
+pkgver=1.0.1
+pkgrel=1
+pkgdesc="Manage the renaming of audio files for the Roland FP-30 Digital Piano"
+arch=(any)
+url="https://github.com/tifrueh/roland-usb"
+license=('GPL')
+makedepends=('cli11')
+source=("https://github.com/tifrueh/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=(64965d813255dd486f1024491f923e16ab6d599cc697e7404a582dc901c8c408)
+
+build() {
+	cd "$pkgname-$pkgver"
+	make
+}
+
+package() {
+	cd "$pkgname-$pkgver"
+	make DESTDIR="$pkgdir" install
+}
