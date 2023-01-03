@@ -1,0 +1,26 @@
+# This is an example PKGBUILD file. Use this as a start to creating your own,
+# and remove these comments. For more information, see 'man PKGBUILD'.
+# NOTE: Please fill out the license field for your package! If it is unknown,
+# then please put 'unknown'.
+
+# Maintainer: Timo Früh <timo.frueh@icloud.com>
+pkgname=lv95-converter
+pkgver=1.0.3
+pkgrel=1
+pkgdesc="Convert LV95 to WGS84 and vice versa"
+arch=(any)
+url="https://github.com/tifrueh/lv95-converter"
+license=('GPL')
+makedepends=('cli11')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/tifrueh/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=(8cf6bdd41af84e7fe82a52543d7c663d7c46b62e7e7b6ea89644141663b48528)
+
+build() {
+	cd "$pkgname-$pkgver"
+	make
+}
+
+package() {
+	cd "$pkgname-$pkgver"
+	make DESTDIR="$pkgdir" install
+}
