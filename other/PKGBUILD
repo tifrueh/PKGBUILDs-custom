@@ -4,7 +4,7 @@
 
 pkgname=zork1
 pkgver=88
-pkgrel=1
+pkgrel=2
 pkgdesc="Zork I adventure game"
 url="http://infocom-if.org"
 depends=('frotz-ncurses')
@@ -17,10 +17,10 @@ package() {
   cd $srcdir
 
   install -D -m644 DATA/ZORK1.DAT $pkgdir/usr/share/$pkgname/ZORK1.DAT
-  install -D -m644 README.txt $pkgdir/usr/share/$pkgname/ZORK1.DAT
+  install -D -m644 README.TXT $pkgdir/usr/share/$pkgname/ZORK1.DAT
   echo "#!/bin/sh" > $pkgname
   echo mkdir -p \$HOME/.local/share/$pkgname/SAVE >> $pkgname
   echo /usr/bin/frotz -R \$HOME/.local/share/$pkgname/SAVE /usr/share/$pkgname/ZORK1.DAT >> $pkgname
   install -D -m755 $pkgname $pkgdir/usr/bin/$pkgname
-  install -D -m444 README.txt $pkgdir/usr/share/licenses/$pkgname/README.txt
+  install -D -m444 README.TXT $pkgdir/usr/share/licenses/$pkgname/README.txt
 }
