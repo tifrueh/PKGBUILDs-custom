@@ -1,0 +1,28 @@
+# Zork I adventure game
+
+# Contributor: David Rosenstrauch <darose@darose.net>
+
+pkgname=zork3
+pkgver=17
+pkgrel=1
+pkgdesc="Zork III adventure game"
+url="http://infocom-if.org"
+depends=('frotz-ncurses')
+source=("$pkgname-$pkgver.zip::http://infocom-if.org/downloads/zork3.zip"
+        "LICENSE")
+sha256sums=("ef4a3b2bb7d3ae65de54a54520b550f13b3a2e964985550ffd401c8925bd0b10"
+            "b6bd4645d0418150f99a4ae957889ccfc6758a0bb4336db73a9e20cd673f00bf")
+arch=('any')
+license=('custom')
+
+package() {
+  cd $srcdir
+
+  install -D -m644 DATA/ZORK3.DAT $pkgdir/usr/share/$pkgname/ZORK3.DAT
+  install -D -m644 README.TXT $pkgdir/usr/share/$pkgname/README.TXT
+  echo "#!/bin/sh" > $pkgname
+  echo mkdir -p \$HOME/.local/share/$pkgname/SAVE >> $pkgname
+  echo /usr/bin/frotz -R \$HOME/.local/share/$pkgname/SAVE /usr/share/$pkgname/ZORK3.DAT >> $pkgname
+  install -D -m755 $pkgname $pkgdir/usr/bin/$pkgname
+  install -D -m444 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  }
