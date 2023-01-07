@@ -1,7 +1,3 @@
-# Zork I adventure game
-
-# Contributor: David Rosenstrauch <darose@darose.net>
-
 pkgname=zork1
 pkgver=88
 pkgrel=3
