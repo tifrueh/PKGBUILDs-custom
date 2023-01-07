@@ -5,7 +5,7 @@
 
 # Maintainer: Timo Früh <timo.frueh@icloud.com>
 pkgname=lv95-converter
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Convert LV95 to WGS84 and vice versa"
 arch=(any)
@@ -13,7 +13,7 @@ url="https://github.com/tifrueh/lv95-converter"
 license=('GPL')
 makedepends=('cli11')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tifrueh/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=(8cf6bdd41af84e7fe82a52543d7c663d7c46b62e7e7b6ea89644141663b48528)
+sha256sums=("96924ad3f1c8a48a9afacf4ffad97a7b8bd06b3c740d41f6e3e556254df5f3bc")
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -22,5 +22,5 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir" install
+	make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
