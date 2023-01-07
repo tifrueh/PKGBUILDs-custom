@@ -1,0 +1,26 @@
+# Zork I adventure game
+
+# Contributor: David Rosenstrauch <darose@darose.net>
+
+pkgname=zork1
+pkgver=88
+pkgrel=1
+pkgdesc="Zork I adventure game"
+url="http://infocom-if.org"
+depends=('frotz-ncurses')
+source=("http://infocom-if.org/downloads/zork1.zip")
+sha256sums=("645027fb189ba8fd30daecca609e68e2bf2337b76e7b4f925ccf58778f3eac40")
+arch=('any')
+license=('custom')
+
+package() {
+  cd $srcdir
+
+  install -D -m644 DATA/ZORK1.DAT $pkgdir/usr/share/$pkgname/ZORK1.DAT
+  install -D -m644 README.txt $pkgdir/usr/share/$pkgname/ZORK1.DAT
+  echo "#!/bin/sh" > $pkgname
+  echo mkdir -p \$HOME/.local/share/$pkgname/SAVE >> $pkgname
+  echo /usr/bin/frotz -R \$HOME/.local/share/$pkgname/SAVE /usr/share/$pkgname/ZORK1.DAT >> $pkgname
+  install -D -m755 $pkgname $pkgdir/usr/bin/$pkgname
+  install -D -m444 README.txt $pkgdir/usr/share/licenses/$pkgname/README.txt
+}
