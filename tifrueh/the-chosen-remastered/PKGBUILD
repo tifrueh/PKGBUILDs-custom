@@ -1,24 +1,24 @@
 # Maintainer: Timo Früh <timo.frueh@icloud.com>
 pkgname=the-chosen-remastered
-pkgver=1.0.0_alpha.2
-pkgrel=2
-pkgdesc="A short Zork-like text-adventure"
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="A short ZORK-like text-adventure"
 arch=(any)
 url="https://github.com/tifrueh/the-chosen-remastered"
 license=('GPL3')
 depends=('ncurses')
 makedepends=('meson' 'ninja')
 provides=('the-chosen-remastered')
-source=("$pkgname-${pkgver//_/-}.tar.gz::https://github.com/tifrueh/the-chosen-remastered/archive/refs/tags/v1.0.0-alpha.2.tar.gz")
-sha256sums=('c4fa4a8f8793e3ced8d8d43439de2ebf651d77b08e67b8067f9b946717628850')
+source=("$pkgname-${pkgver}.tar.gz::https://github.com/tifrueh/the-chosen-remastered/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('bad4f17f06f21b363678b33f25c15af7a940b80bead8155909b5b8ef0996c46d')
 
 build() {
-	cd "$pkgname-${pkgver//_/-}"
+	cd "$pkgname-${pkgver}"
 	meson setup --prefix=/usr --buildtype=plain build 
 	meson compile -C build
 }
 
 package() {
-	cd "$pkgname-${pkgver//_/-}"
+	cd "$pkgname-${pkgver}"
 	DESTDIR="$pkgdir" meson install -C build
 }
