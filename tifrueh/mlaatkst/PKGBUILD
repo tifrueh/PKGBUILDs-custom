@@ -1,0 +1,26 @@
+# Maintainer: Timo Früh <timo.frueh@icloud.com>
+pkgname=mlaatkst
+pkgver=2.1.0
+pkgrel=1
+pkgdesc="Footnote helper for KST students"
+arch=(any)
+url="https://github.com/tifrueh/mlaatkst"
+license=('GPL3')
+depends=(wxwidgets)
+makedepends=(meson)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/tifrueh/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=("5a9bb22231f083f9e2781f6ad96ec946c39da0709d1cdf576eb19cd005e6bc01")
+
+build() {
+	cd "$pkgname-$pkgver"
+	meson setup build --prefix=/usr
+	meson compile -C build
+}
+
+package() {
+	cd "$pkgname-$pkgver"
+	meson install -C build --destdir="$pkgdir/"
+
+	install -D -m 444 -t "$pkgdir/usr/share/icons" "resources/mlaatkst.png"
+	install -D -m 555 -t "$pkgdir/usr/share/applications" "resources/mlaatkst.desktop"	
+}
