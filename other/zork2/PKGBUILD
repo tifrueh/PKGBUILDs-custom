@@ -9,7 +9,7 @@ source=("https://eblong.com/infocom/gamefiles/zork2-r48-s840904.z3"
 sha256sums=("39e3a8bda879e9296ac05c8bdcdae12a1a6fb447a1ef531838e82cfa2db210ac"
             "e0c78f4fd3b75efcb9a27711c18c8cd40b7c04405ee9de0c7d173f93aa6584af"
 	    "23e6c5e0ba62fde1e564bc5b3b469619ddf1f9f1078a2b5a0045ab1117369054")
-arch=('x86_64' 'armhf7' 'aarch64')
+arch=('x86_64' 'armv7h' 'aarch64')
 license=('custom')
 
 package() {
