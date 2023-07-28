@@ -1,24 +1,21 @@
 pkgname=zork2
 pkgver=48
-pkgrel=1
+pkgrel=2
 pkgdesc="Zork II adventure game"
-url="http://infocom-if.org"
-depends=('frotz-ncurses')
-source=("$pkgname-$pkgver.zip::http://infocom-if.org/downloads/zork2.zip"
-        "LICENSE")
-sha256sums=("7c360a14ec61d8e8f265e1aa99a13487c5e0f016a752e4b32314405a0e9ffea0"
-            "e0c78f4fd3b75efcb9a27711c18c8cd40b7c04405ee9de0c7d173f93aa6584af")
-arch=('any')
+depends=('frotz')
+source=("https://eblong.com/infocom/gamefiles/zork2-r48-s840904.z3"
+        "LICENSE"
+	"zork2")
+sha256sums=("39e3a8bda879e9296ac05c8bdcdae12a1a6fb447a1ef531838e82cfa2db210ac"
+            "e0c78f4fd3b75efcb9a27711c18c8cd40b7c04405ee9de0c7d173f93aa6584af"
+	    "23e6c5e0ba62fde1e564bc5b3b469619ddf1f9f1078a2b5a0045ab1117369054")
+arch=('x86_64' 'armhf7' 'aarch64')
 license=('custom')
 
 package() {
   cd $srcdir
 
   install -D -m644 DATA/ZORK2.DAT $pkgdir/usr/share/$pkgname/ZORK2.DAT
-  install -D -m644 README.TXT $pkgdir/usr/share/$pkgname/README.TXT
-  echo "#!/bin/sh" > $pkgname
-  echo mkdir -p \$HOME/.local/share/$pkgname/SAVE >> $pkgname
-  echo /usr/bin/frotz -R \$HOME/.local/share/$pkgname/SAVE /usr/share/$pkgname/ZORK2.DAT >> $pkgname
-  install -D -m755 $pkgname $pkgdir/usr/bin/$pkgname
+  install -D -m755 zork2 $pkgdir/usr/bin/$pkgname
   install -D -m444 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
   }
