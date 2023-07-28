@@ -1,6 +1,6 @@
 pkgname=zork1
 pkgver=88
-pkgrel=6
+pkgrel=7
 pkgdesc="Zork I adventure game"
 depends=('frotz')
 source=("https://eblong.com/infocom/gamefiles/zork1-r88-s840726.z3"
@@ -9,7 +9,7 @@ source=("https://eblong.com/infocom/gamefiles/zork1-r88-s840726.z3"
 sha256sums=("158f1f63b1302591bbce30e1ec23b17909d2a66e39403ed14593a75280b1e7f9"
             "2a65b0f1aaef9a5ff0c523e11fa79e47d94391bc6b06e8920138df06effa1918"
 	    "c7d413130f1c4fc41c0bbddfe99003c877ef2f9e96dbc29821b73e45cfde7a38")
-arch=('x86_64' 'arm7h' 'aarch64')
+arch=('x86_64' 'armv7h' 'aarch64')
 license=('custom')
 
 package() {
