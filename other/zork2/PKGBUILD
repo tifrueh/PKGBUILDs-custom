@@ -1,6 +1,6 @@
 pkgname=zork2
 pkgver=48
-pkgrel=2
+pkgrel=3
 pkgdesc="Zork II adventure game"
 depends=('frotz')
 source=("https://eblong.com/infocom/gamefiles/zork2-r48-s840904.z3"
@@ -15,7 +15,7 @@ license=('custom')
 package() {
   cd $srcdir
 
-  install -D -m644 DATA/ZORK2.DAT $pkgdir/usr/share/$pkgname/ZORK2.DAT
+  install -D -m644 zork2-r48-s840904.z3 $pkgdir/usr/share/$pkgname/ZORKII
   install -D -m755 zork2 $pkgdir/usr/bin/$pkgname
   install -D -m444 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
   }
