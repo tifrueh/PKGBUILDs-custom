@@ -1,24 +1,21 @@
 pkgname=zork1
 pkgver=88
-pkgrel=3
+pkgrel=6
 pkgdesc="Zork I adventure game"
-url="http://infocom-if.org"
-depends=('frotz-ncurses')
-source=("$pkgname-$pkgver.zip::http://infocom-if.org/downloads/zork1.zip"
-        "LICENSE")
-sha256sums=("645027fb189ba8fd30daecca609e68e2bf2337b76e7b4f925ccf58778f3eac40"
-            "2a65b0f1aaef9a5ff0c523e11fa79e47d94391bc6b06e8920138df06effa1918")
-arch=('any')
+depends=('frotz')
+source=("https://eblong.com/infocom/gamefiles/zork1-r88-s840726.z3"
+        "LICENSE"
+	"zork1")
+sha256sums=("158f1f63b1302591bbce30e1ec23b17909d2a66e39403ed14593a75280b1e7f9"
+            "2a65b0f1aaef9a5ff0c523e11fa79e47d94391bc6b06e8920138df06effa1918"
+	    "c7d413130f1c4fc41c0bbddfe99003c877ef2f9e96dbc29821b73e45cfde7a38")
+arch=('x86_64' 'arm7h' 'aarch64')
 license=('custom')
 
 package() {
   cd $srcdir
 
-  install -D -m644 DATA/ZORK1.DAT $pkgdir/usr/share/$pkgname/ZORK1.DAT
-  install -D -m644 README.TXT $pkgdir/usr/share/$pkgname/README.TXT
-  echo "#!/bin/sh" > $pkgname
-  echo mkdir -p \$HOME/.local/share/$pkgname/SAVE >> $pkgname
-  echo /usr/bin/frotz -R \$HOME/.local/share/$pkgname/SAVE /usr/share/$pkgname/ZORK1.DAT >> $pkgname
-  install -D -m755 $pkgname $pkgdir/usr/bin/$pkgname
-  install -D -m444 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -D -m644 zork1-r88-s840726.z3 $pkgdir/usr/share/$pkgname/ZORKI
+  install -D -m755 zork1 $pkgdir/usr/bin/$pkgname
+  install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
   }
