@@ -9,7 +9,7 @@ source=("https://eblong.com/infocom/gamefiles/zork3-r17-s840727.z3"
 sha256sums=("62ced461c650265ea55b17e7f0e368724e0b43bf92af6f1a3d566e82c7608be2"
             "b6bd4645d0418150f99a4ae957889ccfc6758a0bb4336db73a9e20cd673f00bf"
 	    "854d462a717f40c63bef2908ef38d6869f7e5fab6e9f004f7d5a8f77134bd12d")
-arch=('x86_64' 'arm7h' 'aarch64')
+arch=('x86_64' 'armv7h' 'aarch64')
 license=('custom')
 
 package() {
