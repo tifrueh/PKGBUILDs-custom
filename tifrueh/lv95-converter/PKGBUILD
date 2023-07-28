@@ -6,9 +6,9 @@
 # Maintainer: Timo Früh <timo.frueh@icloud.com>
 pkgname=lv95-converter
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert LV95 to WGS84 and vice versa"
-arch=(any)
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/tifrueh/lv95-converter"
 license=('GPL')
 makedepends=('cli11')
