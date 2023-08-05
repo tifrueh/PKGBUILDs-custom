@@ -1,7 +1,7 @@
 # Maintainer: Timo Früh <timo.frueh@icloud.com>
 pkgname=mlaatkst
 pkgver=2.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Footnote helper for KST students"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/tifrueh/mlaatkst"
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=(wxwidgets)
 makedepends=(meson)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tifrueh/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("2b7336e90b68401e45511edb4b007f7ee8ccf6dc7fe32d9e34c2ee42888f1987")
+sha256sums=("1196641e9512c387d07fbaaced3267c05144af6627f3b1cf626caf53847af542")
 
 build() {
 	cd "$pkgname-$pkgver"
