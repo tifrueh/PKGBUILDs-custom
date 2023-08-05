@@ -1,7 +1,7 @@
 # Maintainer: Timo Früh <timo.frueh@icloud.com>
 pkgname=mlaatkst
 pkgver=2.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Footnote helper for KST students"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/tifrueh/mlaatkst"
@@ -21,6 +21,6 @@ package() {
 	cd "$pkgname-$pkgver"
 	meson install -C build --destdir="$pkgdir/"
 
-	install -D -m 444 -t "$pkgdir/usr/share/icons/mlaatkst.png" "resources/mlaatkst 2@512px.png"
+	install -D -m 444 -t "$pkgdir/usr/share/icons/" "resources/mlaatkst.png"
 	install -D -m 555 -t "$pkgdir/usr/share/applications" "resources/mlaatkst.desktop"	
 }
