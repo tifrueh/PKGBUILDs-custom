@@ -1,26 +1,22 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Timo Früh <timo.frueh@icloud.com>
 pkgname=lv95-converter
-pkgver=1.0.4
-pkgrel=2
+pkgver=1.1.1
+pkgrel=0
 pkgdesc="Convert LV95 to WGS84 and vice versa"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/tifrueh/lv95-converter"
-license=('GPL')
-makedepends=('cli11')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/tifrueh/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("96924ad3f1c8a48a9afacf4ffad97a7b8bd06b3c740d41f6e3e556254df5f3bc")
+license=('GPL3')
+makedepends=('cli11' 'pkgconf' 'meson')
+source=("https://github.com/tifrueh/lv95-converter/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
+sha256sums=("a1bef9b7aa8b146cee6faa9da5438a3e0bcd7451dfa76600ae2aeea7f2a9bb86")
 
 build() {
-	cd "$pkgname-$pkgver"
-	make
+	cd "$pkgname-v$pkgver"
+	meson setup --prefix=/usr --buildtype=plain build
+	meson compile -C build
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir" PREFIX="/usr" install
+	cd "$pkgname-v$pkgver"
+	meson install --destdir=$pkgdir -C build
 }
