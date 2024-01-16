@@ -1,13 +1,13 @@
 # Maintainer: Timo Früh <timo.frueh@icloud.com>
 pkgname=the-chosen-remastered
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A short ZORK-like text-adventure"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/tifrueh/the-chosen-remastered"
 license=('GPL3')
 depends=('ncurses')
-makedepends=('meson')
+makedepends=('meson' 'pkgconf')
 source=("https://github.com/tifrueh/the-chosen-remastered/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
 sha256sums=('25ba4529eb981bd94f46279a540dc57151ebc126c9118f41510f101311dc4ac0')
 
