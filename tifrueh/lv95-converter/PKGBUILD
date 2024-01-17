@@ -1,22 +1,22 @@
 # Maintainer: Timo Früh <timo.frueh@icloud.com>
 pkgname=lv95-converter
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=0
 pkgdesc="Convert LV95 to WGS84 and vice versa"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/tifrueh/lv95-converter"
 license=('GPL3')
 makedepends=('cli11' 'pkgconf' 'meson')
-source=("https://github.com/tifrueh/lv95-converter/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=("a1bef9b7aa8b146cee6faa9da5438a3e0bcd7451dfa76600ae2aeea7f2a9bb86")
+source=("https://github.com/tifrueh/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
+sha256sums=("3b30e3201be2305ca378871ae148a6b457dbb73db8ebf24d6ee7cf058293a9b6")
 
 build() {
-	cd "$pkgname-v$pkgver"
+	cd "$pkgname-$pkgver"
 	meson setup --prefix=/usr --buildtype=plain build
 	meson compile -C build
 }
 
 package() {
-	cd "$pkgname-v$pkgver"
+	cd "$pkgname-$pkgver"
 	meson install --destdir=$pkgdir -C build
 }
