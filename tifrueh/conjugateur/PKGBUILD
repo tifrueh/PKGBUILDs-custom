@@ -1,6 +1,6 @@
 # Maintainer: Timo Früh <timo.frueh@icloud.com>
 pkgname=conjugateur
-pkgver=1.0.0.beta5
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="French verb conjugation trainer"
 arch=('x86_64' 'arm64')
@@ -8,17 +8,17 @@ url="https://github.com/tifrueh/conjugateur"
 license=('GPL3')
 depends=('wxwidgets')
 makedepends=('meson')
-source=("https://github.com/tifrueh/$pkgname/archive/refs/tags/v1.0.0-beta-5.tar.gz")
-sha256sums=('efc50e7931c474bf1b54ca21ba1ceeabba815ff562d6894815f4e23f8da150d4')
+source=("https://github.com/tifrueh/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('e8510e2dd050727bbc2c3dde5b0ba4f96cbc8cc1bedf840e8cb7024c130dfd29')
 
 build() {
-	cd "$pkgname-1.0.0-beta-5"
+	cd "$pkgname-$pkgver"
 	meson setup --prefix=/usr --buildtype=plain build
-	meson compile -C build
+	meson compile conjugateur -C build
 }
 
 package() {
-	cd "$pkgname-1.0.0-beta-5"
+	cd "$pkgname-$pkgver"
 	meson install -C build --destdir "$pkgdir"
 	install -D -m 644 "resources/conjugateur.desktop" "$pkgdir/usr/share/applications/conjugateur.desktop"
 	install -D -m 644 "resources/conjugateur.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/conjugateur.png"
