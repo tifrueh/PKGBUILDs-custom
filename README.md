@@ -1,5 +1,4 @@
 # PKGBUILDs
-This is just where I put PKGBUILDs for software which either:
-- I wrote myself
-- has an outdated version on the AUR
-- or has a PKGBUILD on the AUR which I don't like and want to improve
+
+This repo contains PKGBUILD files for software which I didn't write myself but
+wanted improve the PKGBUILD of, or create one for.
