@@ -1,7 +1,7 @@
-# Maintainer: Timo Früh <timo.frueh@icloud.com>
+# Maintainer: Timo Früh <dev@tifrueh.ch>
 pkgname=mlaatkst
 pkgver=2.1.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Footnote helper for KST students"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/tifrueh/mlaatkst"

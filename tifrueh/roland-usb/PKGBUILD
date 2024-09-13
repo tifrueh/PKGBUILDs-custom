@@ -1,7 +1,7 @@
-# Maintainer: Timo Früh <timo.frueh@icloud.com>
+# Maintainer: Timo Früh <dev@tifrueh.ch>
 pkgname=roland-usb
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Manage the renaming of audio files for the Roland FP-30 Digital Piano"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/tifrueh/roland-usb"

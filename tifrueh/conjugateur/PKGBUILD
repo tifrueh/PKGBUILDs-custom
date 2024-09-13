@@ -1,7 +1,7 @@
-# Maintainer: Timo Früh <timo.frueh@icloud.com>
+# Maintainer: Timo Früh <dev@tifrueh.ch>
 pkgname=conjugateur
 pkgver=1.0.3
-pkgrel=0
+pkgrel=1
 pkgdesc="French verb conjugation trainer"
 arch=('x86_64' 'arm64')
 url="https://github.com/tifrueh/conjugateur"
