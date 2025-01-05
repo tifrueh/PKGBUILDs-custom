@@ -1,0 +1,52 @@
+# Maintainer: Timo Früh <dev@tifrueh.ch>
+pkgname=brother-dcpj56dw
+pkgver=1.0.0
+pkgrel=1
+_vpkgrel=0
+pkgdesc="LPR and CUPS driver for the Brother DCP-J562DW"
+arch=('i386' 'x86_64')
+url="https://support.brother.com"
+license=('custom: brother commercial license')
+depends=('cups')
+install=
+changelog=
+source=("https://download.brother.com/welcome/dlf102101/dcpj562dwlpr-$pkgver-$_vpkgrel.i386.rpm"
+        "https://download.brother.com/welcome/dlf102102/dcpj562dwcupswrapper-$pkgver-$_vpkgrel.i386.rpm"
+        "lpr-license.txt"
+        "cupswrapper-license.txt")
+sha256sums=('4292ca10131c838cbe5acbaefdaea29dd6efc3488e796ba19d19a77006b61f22'
+            'debba8165f5aeccd15abc4ec77d919106db32c32e46a264a8032dfcc7b103076'
+            'b75dfadad4f6a61dc59f0cbaad8bb9f038211f79982462e150d2ef131ab9a304'
+            'feeab65c4e5114b3de75f9987118e850fa1c74215b9d22018691f4c6ab46891a')
+
+if test "$CARCH" == x86_64; then
+	depends+=('lib32-glibc')
+fi
+
+prepare() {
+	install -d $srcdir/usr/share
+	install -d $srcdir/usr/lib/cups/filter
+
+	_wrapper=$srcdir/opt/brother/Printers/dcpj562dw/cupswrapper/cupswrapperdcpj562dw
+
+	sed -i '/lpadmin/d' $_wrapper
+	sed -i 's|/usr|$srcdir/usr|g' $_wrapper
+	sed -i 's|/opt|$srcdir/opt|g' $_wrapper
+	sed -i 's|lpinfo|echo|g' $_wrapper
+	export srcdir=$srcdir
+
+	/bin/sh $_wrapper
+
+	_filter=$srcdir/usr/lib/cups/filter/brother_lpdwrapper_dcpj562dw
+
+	sed -i "s|$srcdir||g" $_filter
+
+	rm $srcdir/opt/brother/Printers/dcpj562dw/inf/setupPrintcapij
+}
+
+package() {
+	cp -R $srcdir/opt $pkgdir
+	cp -R $srcdir/usr $pkgdir
+	install -m 644 -D lpr-license.txt $pkgdir/usr/share/licenses/${pkgname}/lpr-license.txt
+	install -m 644 -D cupswrapper-license.txt $pkgdir/usr/share/licenses/${pkgname}/cupswrapper-license.txt
+}
