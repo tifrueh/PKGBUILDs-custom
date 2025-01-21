@@ -1,13 +1,14 @@
 # Maintainer: Timo Früh <dev@tifrueh.ch>
 pkgname=brother-dcpj56dw
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 _vpkgrel=0
 pkgdesc="LPR and CUPS driver for the Brother DCP-J562DW"
 arch=('i386' 'x86_64')
 url="https://support.brother.com"
 license=('custom: brother commercial license')
 depends=('cups')
+optdepends=('brscan4: scanning support via sane')
 install=
 changelog=
 source=("https://download.brother.com/welcome/dlf102101/dcpj562dwlpr-$pkgver-$_vpkgrel.i386.rpm"
